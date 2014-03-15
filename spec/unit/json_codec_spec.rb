@@ -6,12 +6,12 @@ describe Steno::Codec::Json do
 
   describe "#encode_record" do
     it "should encode records as json hashes" do
-      parsed = Yajl::Parser.parse(codec.encode_record(record))
+      parsed = MultiJson.load(codec.encode_record(record))
       parsed.class.should == Hash
     end
 
     it "should encode the timestamp as a float" do
-      parsed = Yajl::Parser.parse(codec.encode_record(record))
+      parsed = MultiJson.load(codec.encode_record(record))
       parsed["timestamp"].class.should == Float
     end
 

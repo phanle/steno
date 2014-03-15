@@ -1,6 +1,7 @@
 require "digest/md5"
 require "set"
-require "yajl"
+require "multi_json"
+require "multi_json"
 
 module Steno
 end
@@ -31,8 +32,8 @@ class Steno::JsonPrettifier
 
   def prettify_line(line)
     begin
-      json_record = Yajl::Parser.parse(line)
-    rescue Yajl::ParseError => e
+      json_record = MultiJson.load(line)
+    rescue MultiJson::ParseError => e
       raise ParseError, e.to_s
     end
 

@@ -34,7 +34,7 @@ class Steno::Sink::Counter < Steno::Sink::Base
         hash[level_name] = @counts.fetch(level_name.to_s, 0)
       end
     end
-    Yajl::Encoder.encode(hash)
+    MultiJson.dump(hash)
   end
 
   # Provide a map of string level -> count. This is thread-safe, the return value is a copy.

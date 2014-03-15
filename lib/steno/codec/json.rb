@@ -31,6 +31,6 @@ class Steno::Codec::Json < Steno::Codec::Base
       "method"     => record.method,
     }
 
-    Yajl::Encoder.encode(h) + "\n"
+    MultiJson.dump(h) + "\n"
   end
 end
